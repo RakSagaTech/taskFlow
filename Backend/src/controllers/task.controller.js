@@ -98,3 +98,57 @@ export const getTaskController = async (req, res) => {
 
   }
 };
+
+
+export const updateTaskController = async (req, res) => {
+  try {
+
+    const { id } = req.params;
+
+    const {
+      title,
+      description,
+      priority,
+      status,
+    } = req.body;
+
+    const updatedTask = await Task.findOneAndUpdate(
+      {
+        _id: id,
+        createdBy: req.user.id,
+      },
+      {
+        title,
+        description,
+        priority,
+        status,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({
+        message: "Task not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Task updated successfully",
+      data: {
+        task: updatedTask,
+      },
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Internal server error",
+    });
+
+  }
+};
