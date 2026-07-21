@@ -1,9 +1,14 @@
+import { RouterProvider } from 'react-router-dom';
+import router from './app.routes.jsx';
+
 
 function App() {
 
   return (
     <>
-      <h1>TaskFlow</h1>;
+      <RouterProvider 
+        router={router}
+      />
     </>
   )
 }
