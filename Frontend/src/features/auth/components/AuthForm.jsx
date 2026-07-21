@@ -1,3 +1,4 @@
+import { useState } from 'react'; 
 import { Link } from "react-router-dom";
 
 
@@ -37,6 +38,32 @@ const AuthForm = ({
   footerLinkText, 
   footerText,
 }) => {
+
+
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: ""
+  })
+
+  const { username, email, password } = formData
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log(formData);
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target 
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]:value
+    }))
+  }
+
   return (
     <section className="w-full max-w-lg border border-slate-700 rounded-2xl bg-slate-800 p-8 shadow-2xl">
       <header className="mb-10 text-center">
@@ -56,7 +83,7 @@ const AuthForm = ({
         </p>
       </div>
 
-      <form className="space-y-6">
+      <form className="space-y-6"  onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username" className={labelClass}>
             Username
@@ -68,6 +95,8 @@ const AuthForm = ({
             placeholder="Enter username"
             className={inputClass}
             autoComplete="username"
+            onChange={handleInputChange}
+            value={username}
             required
           />
         </div>
@@ -84,6 +113,8 @@ const AuthForm = ({
               placeholder="Enter email"
               className={inputClass}
               autoComplete="email"
+              onChange={handleInputChange}
+              value={email}
               required
             />
           </div>
@@ -100,6 +131,8 @@ const AuthForm = ({
             placeholder="Enter password"
             className={inputClass}
             autoComplete={showEmail ? "new-password" : "current-password"}
+            onChange={handleInputChange}
+            value={password}
             required
           />
         </div>
