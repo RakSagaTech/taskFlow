@@ -4,6 +4,12 @@ import { generateToken } from "../utils/generateToken.js";
 import User from "../model/user.model.js";
 
 
+
+/**
+ * @name registerUserController
+ * @desc Register a new user and generate an authentication token
+ * @access Public
+ */
 export const registerUserController = async (req, res) => {
   try{
 
@@ -65,6 +71,11 @@ export const registerUserController = async (req, res) => {
 }
 
 
+/**
+ * @name loginUserController
+ * @desc Authenticate an existing user and generate an authentication token
+ * @access Public
+ */
 export const loginUserController = async (req, res) => {
   try{
 

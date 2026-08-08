@@ -1,7 +1,11 @@
 import Task from "../model/task.model.js";
 
 
-
+/**
+ * @name createTaskController
+ * @desc Create a new task for the authenticated user
+ * @access Private
+ */
 export const createTaskController = async (req, res) => {
   try{
 
@@ -38,6 +42,11 @@ export const createTaskController = async (req, res) => {
 }
 
 
+/**
+ * @name getTasksController
+ * @desc Get all tasks created by the authenticated user
+ * @access Private
+ */
 export const getAllTasksController = async (req, res) => {
   try{
 
@@ -64,6 +73,11 @@ export const getAllTasksController = async (req, res) => {
 }
 
 
+/**
+ * @name getTaskByIdController
+ * @desc Get a specific task by its ID
+ * @access Private
+ */
 export const getTaskController = async (req, res) => {
   try{
 
@@ -97,6 +111,11 @@ export const getTaskController = async (req, res) => {
 }
 
 
+/**
+ * @name updateTaskController
+ * @desc Update a specific task by its ID
+ * @access Private
+ */
 export const updateTaskController = async (req, res) => {
   try{
 
@@ -150,6 +169,11 @@ export const updateTaskController = async (req, res) => {
 }
 
 
+/**
+ * @name deleteTaskController
+ * @desc Delete a specific task by its ID
+ * @access Private
+ */
 export const deleteTaskController = async (req, res) => {
   try{
 

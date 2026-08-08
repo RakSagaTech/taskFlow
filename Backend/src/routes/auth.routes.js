@@ -8,7 +8,11 @@ import { registerUserController, loginUserController } from "../controllers/auth
 const authRouter = express.Router();
 
 
-
+/**
+ * @route POST /api/v1/auth/register
+ * @desc Register a new user
+ * @access Public
+ */
 authRouter.post(
   "/register",
   validate(registerSchema),
@@ -16,6 +20,11 @@ authRouter.post(
 );
 
 
+/**
+ * @route POST /api/v1/auth/login
+ * @desc Login an existing user
+ * @access Public
+ */
 authRouter.post(
   "/login",
   validate(loginSchema),
